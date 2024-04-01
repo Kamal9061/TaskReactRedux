@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Other steps for your workflow
+
+      - name: Run Jekyll build
+        uses: actions/jekyll-build@v1
+        with:
+          source: ./docs
+          destination: ./docs/_site
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token here
